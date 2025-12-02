@@ -96,13 +96,13 @@ main {
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 /* ===== Hero Section ===== */
 .hero {
   text-align: center;
-  padding: 2rem 0;
+  padding: 1.5rem 0 0.5rem;
 }
 
 .avatar-container {
@@ -531,11 +531,11 @@ main {
 @media (min-width: 640px) {
   main {
     padding: 3rem 2rem;
-    gap: 3rem;
+    gap: 2rem;
   }
   
   .hero {
-    padding: 3rem 0;
+    padding: 2rem 0 1rem;
   }
   
   .avatar-container {
