@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support ChiefGyk3D | Donations & Tips</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="background-glow"></div>
+  <div class="background-grid"></div>
+
+  <main>
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="avatar-container">
+        <div class="avatar-glow"></div>
+        <img src="media/logo.png" alt="ChiefGyk3D" class="avatar" onerror="this.style.display='none'">
+        <div class="avatar-fallback"><i class="fas fa-user"></i></div>
+      </div>
+      <h1>ChiefGyk3D</h1>
+      <p class="tagline">Content Creator • Streamer • Cybersecurity Engineer</p>
+      
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="https://www.youtube.com/channel/UCvFY4KyqVBuYd7JAl3NRyiQ" title="YouTube" target="_blank" class="social-link">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://twitch.tv/chiefgyk3d" title="Twitch" target="_blank" class="social-link">
+          <i class="fab fa-twitch"></i>
+        </a>
+        <a href="https://www.tiktok.com/@chiefgyk3d" title="TikTok" target="_blank" class="social-link">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://kick.com/chiefgyk3d" title="Kick" target="_blank" class="social-link">
+          <i class="fas fa-k"></i>
+        </a>
+        <a href="https://social.chiefgyk3d.com/@chiefgyk3d" title="Mastodon" target="_blank" class="social-link">
+          <i class="fab fa-mastodon"></i>
+        </a>
+        <a href="https://bsky.app/profile/chiefgyk3d.com" title="Bluesky" target="_blank" class="social-link social-img">
+          <img src="media/bluesky.png" alt="Bluesky">
+        </a>
+        <a href="https://github.com/ChiefGyk3D" title="GitHub" target="_blank" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://discord.chiefgyk3d.com" title="Discord" target="_blank" class="social-link">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://matrix-invite.chiefgyk3d.com" title="Matrix" target="_blank" class="social-link social-img">
+          <img src="media/matrix.png" alt="Matrix">
+        </a>
+      </div>
+    </header>
+
+    <!-- Donation Platforms Section -->
+    <section class="section">
+      <h2 class="section-title">
+        <i class="fas fa-heart"></i>
+        Support My Work
+      </h2>
+      <div class="donation-platforms">
+        <a href="https://shop.chiefgyk3d.com/" target="_blank" class="platform-card merch">
+          <div class="platform-icon">
+            <i class="fas fa-shirt"></i>
+          </div>
+          <div class="platform-info">
+            <span class="platform-name">Merch Store</span>
+            <span class="platform-desc">Get Some Gear</span>
+          </div>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="https://patreon.com/chiefgyk3d?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" target="_blank" class="platform-card patreon">
+          <div class="platform-icon">
+            <i class="fab fa-patreon"></i>
+          </div>
+          <div class="platform-info">
+            <span class="platform-name">Patreon</span>
+            <span class="platform-desc">Monthly Support</span>
+          </div>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="https://streamelements.com/chiefgyk3d/tip" target="_blank" class="platform-card streamelements">
+          <div class="platform-icon">
+            <i class="fas fa-gift"></i>
+          </div>
+          <div class="platform-info">
+            <span class="platform-name">StreamElements</span>
+            <span class="platform-desc">One-time Tip</span>
+          </div>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Cryptocurrency Section -->
+    <section class="section">
+      <h2 class="section-title">
+        <i class="fas fa-coins"></i>
+        Cryptocurrency Tips
+      </h2>
+      <p class="section-subtitle">Click any address to copy it to your clipboard</p>
+      
+      <div class="crypto-grid">
+        <!-- Bitcoin -->
+        <div class="crypto-card" data-crypto="bitcoin">
+          <div class="crypto-header">
+            <div class="crypto-icon bitcoin">
+              <i class="fab fa-bitcoin"></i>
+            </div>
+            <div class="crypto-name">
+              <span class="name">Bitcoin</span>
+              <span class="symbol">BTC</span>
+            </div>
+          </div>
+          <div class="crypto-address-container">
+            <code class="crypto-address" id="btc">bc1qztdzcy2wyavj2tsuandu4p0tcklzttvdnzalla</code>
+            <button class="copy-btn" onclick="copyToClipboard('btc', this)" title="Copy address">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+          <div class="copy-feedback">
+            <i class="fas fa-check"></i> Copied!
+          </div>
+        </div>
+
+        <!-- Monero -->
+        <div class="crypto-card" data-crypto="monero">
+          <div class="crypto-header">
+            <div class="crypto-icon monero">
+              <i class="fab fa-monero"></i>
+            </div>
+            <div class="crypto-name">
+              <span class="name">Monero</span>
+              <span class="symbol">XMR</span>
+            </div>
+          </div>
+          <div class="crypto-address-container">
+            <code class="crypto-address" id="xmr">84Y34QubRwQYK2HNviezeH9r6aRcPvgWmKtDkN3EwiuVbp6sNLhm9ffRgs6BA9X1n9jY7wEN16ZEpiEngZbecXseUrW8SeQ</code>
+            <button class="copy-btn" onclick="copyToClipboard('xmr', this)" title="Copy address">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+          <div class="copy-feedback">
+            <i class="fas fa-check"></i> Copied!
+          </div>
+        </div>
+
+        <!-- Ethereum -->
+        <div class="crypto-card" data-crypto="ethereum">
+          <div class="crypto-header">
+            <div class="crypto-icon ethereum">
+              <i class="fab fa-ethereum"></i>
+            </div>
+            <div class="crypto-name">
+              <span class="name">Ethereum</span>
+              <span class="symbol">ETH</span>
+            </div>
+          </div>
+          <div class="crypto-address-container">
+            <code class="crypto-address" id="eth">0x554f18cfB684889c3A60219BDBE7b050C39335ED</code>
+            <button class="copy-btn" onclick="copyToClipboard('eth', this)" title="Copy address">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+          <div class="copy-feedback">
+            <i class="fas fa-check"></i> Copied!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Made with <i class="fas fa-heart heart-pulse"></i> by <a href="https://github.com/ChiefGyk3D" target="_blank">ChiefGyk3D</a></p>
+    </footer>
+  </main>
+
+  <script>
+    function copyToClipboard(id, button) {
+      const text = document.getElementById(id).textContent;
+      const card = button.closest('.crypto-card');
+      const feedback = card.querySelector('.copy-feedback');
+      
+      navigator.clipboard.writeText(text).then(() => {
+        // Show feedback
+        feedback.classList.add('show');
+        button.classList.add('copied');
+        
+        // Reset after animation
+        setTimeout(() => {
+          feedback.classList.remove('show');
+          button.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        
+        feedback.classList.add('show');
+        button.classList.add('copied');
+        setTimeout(() => {
+          feedback.classList.remove('show');
+          button.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    // Add hover effect to crypto cards
+    document.querySelectorAll('.crypto-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-4px)';
+      });
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
