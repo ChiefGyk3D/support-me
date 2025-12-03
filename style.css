@@ -93,7 +93,7 @@ main {
   z-index: 1;
   max-width: 800px;
   margin: 0 auto;
-  padding: 0.5rem 0.65rem;
+  padding: 0.5rem 0.65rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -110,6 +110,8 @@ main {
   width: 52px;
   height: 52px;
   margin: 0 auto 0.4rem;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .avatar-glow {
@@ -120,6 +122,7 @@ main {
   opacity: 0.6;
   filter: blur(12px);
   animation: avatar-pulse 3s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes avatar-pulse {
