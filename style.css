@@ -16,6 +16,7 @@
   --bitcoin: #f7931a;
   --monero: #ff6600;
   --ethereum: #627eea;
+  --solana: #9945ff;
   --patreon: #ff424d;
   --streamelements: #6441a5;
   
@@ -358,7 +359,7 @@ main {
 /* ===== Cryptocurrency Grid ===== */
 .crypto-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.35rem;
 }
 
@@ -393,6 +394,11 @@ main {
   box-shadow: 0 8px 32px rgba(98, 126, 234, 0.15);
 }
 
+.crypto-card[data-crypto="solana"]:hover {
+  border-color: var(--solana);
+  box-shadow: 0 8px 32px rgba(153, 69, 255, 0.15);
+}
+
 .crypto-header {
   display: flex;
   flex-direction: column;
@@ -425,6 +431,11 @@ main {
 .crypto-icon.ethereum {
   background: rgba(98, 126, 234, 0.15);
   color: var(--ethereum);
+}
+
+.crypto-icon.solana {
+  background: rgba(153, 69, 255, 0.15);
+  color: var(--solana);
 }
 
 .crypto-name {
@@ -651,6 +662,7 @@ main {
   }
   
   .crypto-grid {
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.35rem;
   }
   
