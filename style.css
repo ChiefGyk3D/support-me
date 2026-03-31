@@ -577,17 +577,89 @@ main {
 
 /* Mobile-only compact layout (iPhone 15 and similar narrow viewports) */
 @media (max-width: 639px) {
+  html {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  body {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  main {
+    height: 100vh;
+    height: 100dvh;
+    padding: 0.35rem 0.5rem 0.15rem;
+    gap: 0.25rem;
+  }
+
+  .hero {
+    flex-shrink: 1;
+    min-height: 0;
+    padding: 0.2rem 0 0.15rem;
+  }
+
+  .avatar-container {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.3rem;
+  }
+
+  .tagline {
+    margin-bottom: 0.3rem;
+  }
+
+  .social-icons {
+    gap: 0.3rem;
+    row-gap: 0.25rem;
+  }
+
+  .social-link {
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+  }
+
+  .social-link.social-img img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .section {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .section-title {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .section-subtitle {
+    flex-shrink: 0;
+    margin-bottom: 0.3rem;
+  }
+
   .donation-platforms {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    flex: 1;
+    min-height: 0;
+    margin-top: 0.2rem;
   }
 
   .platform-card {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    gap: 0.3rem;
-    padding: 0.4rem 0.35rem;
+    gap: 0.2rem;
+    padding: 0.3rem 0.25rem;
+    min-height: 0;
   }
 
   .platform-card:hover {
@@ -600,22 +672,61 @@ main {
 
   .platform-icon {
     margin: 0 auto;
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
   }
 
   .platform-info {
     align-items: center;
   }
 
+  .platform-name {
+    font-size: 0.7rem;
+  }
+
+  .platform-desc {
+    font-size: 0.65rem;
+  }
+
+  .crypto-grid {
+    flex: 1;
+    min-height: 0;
+    gap: 0.25rem;
+  }
+
   .crypto-card {
     min-width: 0;
+    min-height: 0;
     overflow: hidden;
+    padding: 0.3rem;
+  }
+
+  .crypto-header {
+    gap: 0.15rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .crypto-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.8rem;
+  }
+
+  .crypto-name .name {
+    font-size: 0.7rem;
+  }
+
+  .crypto-name .symbol {
+    font-size: 0.55rem;
   }
 
   .crypto-address-container {
     flex-direction: row;
     align-items: center;
-    padding: 0.3rem 0.35rem;
+    padding: 0.2rem 0.25rem;
     min-width: 0;
+    gap: 0.2rem;
   }
 
   .crypto-address {
@@ -625,11 +736,19 @@ main {
     word-break: normal;
     text-align: left;
     min-width: 0;
+    font-size: 0.55rem;
   }
 
   .copy-btn {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .footer {
+    flex-shrink: 0;
+    padding: 0.15rem 0;
+    font-size: 0.65rem;
   }
 }
 
