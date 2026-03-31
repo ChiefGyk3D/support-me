@@ -133,9 +133,14 @@
           </div>
           <div class="crypto-address-container">
             <code class="crypto-address" id="btc" title="bc1qztdzcy2wyavj2tsuandu4p0tcklzttvdnzalla">bc1qztdzcy2wyavj2tsuandu4p0tcklzttvdnzalla</code>
-            <button class="copy-btn" onclick="copyToClipboard('btc', this)" title="Copy address">
-              <i class="fas fa-copy"></i>
-            </button>
+            <div class="crypto-btn-group">
+              <button class="copy-btn" onclick="copyToClipboard('btc', this)" title="Copy address">
+                <i class="fas fa-copy"></i>
+              </button>
+              <button class="qr-btn" onclick="showQRCode('bitcoin', 'Bitcoin (BTC)')" title="Show QR code">
+                <i class="fas fa-qrcode"></i>
+              </button>
+            </div>
           </div>
           <div class="copy-feedback">
             <i class="fas fa-check"></i> Copied!
@@ -155,9 +160,14 @@
           </div>
           <div class="crypto-address-container">
             <code class="crypto-address" id="xmr" title="84Y34QubRwQYK2HNviezeH9r6aRcPvgWmKtDkN3EwiuVbp6sNLhm9ffRgs6BA9X1n9jY7wEN16ZEpiEngZbecXseUrW8SeQ">84Y34QubRwQYK2HNviezeH9r6aRcPvgWmKtDkN3EwiuVbp6sNLhm9ffRgs6BA9X1n9jY7wEN16ZEpiEngZbecXseUrW8SeQ</code>
-            <button class="copy-btn" onclick="copyToClipboard('xmr', this)" title="Copy address">
-              <i class="fas fa-copy"></i>
-            </button>
+            <div class="crypto-btn-group">
+              <button class="copy-btn" onclick="copyToClipboard('xmr', this)" title="Copy address">
+                <i class="fas fa-copy"></i>
+              </button>
+              <button class="qr-btn" onclick="showQRCode('monero', 'Monero (XMR)')" title="Show QR code">
+                <i class="fas fa-qrcode"></i>
+              </button>
+            </div>
           </div>
           <div class="copy-feedback">
             <i class="fas fa-check"></i> Copied!
@@ -177,9 +187,14 @@
           </div>
           <div class="crypto-address-container">
             <code class="crypto-address" id="eth" title="0x554f18cfB684889c3A60219BDBE7b050C39335ED">0x554f18cfB684889c3A60219BDBE7b050C39335ED</code>
-            <button class="copy-btn" onclick="copyToClipboard('eth', this)" title="Copy address">
-              <i class="fas fa-copy"></i>
-            </button>
+            <div class="crypto-btn-group">
+              <button class="copy-btn" onclick="copyToClipboard('eth', this)" title="Copy address">
+                <i class="fas fa-copy"></i>
+              </button>
+              <button class="qr-btn" onclick="showQRCode('ethereum', 'Ethereum (ETH)')" title="Show QR code">
+                <i class="fas fa-qrcode"></i>
+              </button>
+            </div>
           </div>
           <div class="copy-feedback">
             <i class="fas fa-check"></i> Copied!
@@ -199,9 +214,14 @@
           </div>
           <div class="crypto-address-container">
             <code class="crypto-address" id="sol" title="5T8h3HbyvHgLxwXgchRYbHSqRjZyAr8J7uwjLN9Fh8Jh">5T8h3HbyvHgLxwXgchRYbHSqRjZyAr8J7uwjLN9Fh8Jh</code>
-            <button class="copy-btn" onclick="copyToClipboard('sol', this)" title="Copy address">
-              <i class="fas fa-copy"></i>
-            </button>
+            <div class="crypto-btn-group">
+              <button class="copy-btn" onclick="copyToClipboard('sol', this)" title="Copy address">
+                <i class="fas fa-copy"></i>
+              </button>
+              <button class="qr-btn" onclick="showQRCode('solana', 'Solana (SOL)')" title="Show QR code">
+                <i class="fas fa-qrcode"></i>
+              </button>
+            </div>
           </div>
           <div class="copy-feedback">
             <i class="fas fa-check"></i> Copied!
@@ -209,6 +229,18 @@
         </div>
       </div>
     </section>
+
+    <!-- QR Code Modal -->
+    <div class="qr-modal-overlay" id="qrModal" onclick="closeQRModal(event)">
+      <div class="qr-modal">
+        <button class="qr-modal-close" onclick="closeQRModal()" title="Close">&times;</button>
+        <h3 class="qr-modal-title" id="qrModalTitle"></h3>
+        <div class="qr-modal-image-container">
+          <img id="qrModalImage" src="" alt="QR Code" class="qr-modal-image">
+        </div>
+        <p class="qr-modal-hint">Scan to send cryptocurrency</p>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -258,6 +290,34 @@
       card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0)';
       });
+    });
+
+    function showQRCode(crypto, label) {
+      var allowed = ['bitcoin', 'monero', 'ethereum', 'solana'];
+      if (allowed.indexOf(crypto) === -1) return;
+
+      var modal = document.getElementById('qrModal');
+      var image = document.getElementById('qrModalImage');
+      var title = document.getElementById('qrModalTitle');
+      
+      image.src = 'media/qr-' + crypto + '.png';
+      image.alt = label + ' QR Code';
+      title.textContent = label;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeQRModal(event) {
+      if (event && event.target !== event.currentTarget) return;
+      var modal = document.getElementById('qrModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeQRModal();
+      }
     });
   </script>
 </body>
