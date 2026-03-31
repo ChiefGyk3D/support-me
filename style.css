@@ -564,13 +564,10 @@ main {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  opacity: 0;
-  transition: opacity var(--transition-normal);
 }
 
 .qr-modal-overlay.active {
   display: flex;
-  opacity: 1;
 }
 
 .qr-modal {
