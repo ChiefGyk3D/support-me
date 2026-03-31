@@ -4,7 +4,7 @@ A modern, responsive donation and support page featuring cryptocurrency tips, me
 
 ## 🌐 Live Site
 
-[tip.chiefgyk3d.com](https://tip.chiefgyk3d.com) *(update with your actual URL)*
+[support.chiefgyk3d.com](https://support.chiefgyk3d.com)
 
 ## ✨ Features
 
