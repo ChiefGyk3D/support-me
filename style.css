@@ -490,12 +490,13 @@ main {
 
 .crypto-btn-group {
   display: flex;
+  flex-wrap: nowrap;
   gap: 0.25rem;
 }
 
 .copy-btn,
 .qr-btn {
-  flex: none;
+  flex: 1 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -559,18 +560,17 @@ main {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(4px);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  transition: opacity var(--transition-normal);
 }
 
 .qr-modal-overlay.active {
+  display: flex;
   opacity: 1;
-  visibility: visible;
 }
 
 .qr-modal {
@@ -836,6 +836,7 @@ main {
 
   .copy-btn,
   .qr-btn {
+    flex: none;
     width: 22px;
     height: 22px;
     font-size: 0.6rem;
@@ -995,6 +996,7 @@ main {
 
   .copy-btn,
   .qr-btn {
+    flex: none;
     width: 24px;
     height: 24px;
     font-size: 0.7rem;
@@ -1096,6 +1098,7 @@ main {
   
   .copy-btn,
   .qr-btn {
+    flex: none;
     width: 26px;
     height: 26px;
     font-size: 0.75rem;
