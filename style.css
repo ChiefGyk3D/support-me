@@ -606,10 +606,16 @@ main {
     align-items: center;
   }
 
+  .crypto-card {
+    min-width: 0;
+    overflow: hidden;
+  }
+
   .crypto-address-container {
     flex-direction: row;
     align-items: center;
     padding: 0.3rem 0.35rem;
+    min-width: 0;
   }
 
   .crypto-address {
