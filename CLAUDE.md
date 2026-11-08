@@ -27,11 +27,11 @@ The traps, in short — `SIGNATURE.md` has the full reasoning:
 ## Wallet addresses
 
 Never edit an address without being asked to. When changing one, update
-`SIGNATURE.md`, `README.md`, `index.html`, the `media/qr-*.png` codes, **and**
+`SIGNATURE.md`, `README.md`, `addresses.txt`, `index.html`, the `media/qr-*.svg` codes (regenerate with the blog's `scripts/gen-support-qr.sh`), **and**
 every other repository carrying the block.
 
 ## Site
 
-`index.html` and `style.css` are the live site. `media/` holds committed
+`index.html`, `style.css`, `tokens.css`, `support.js` and `_headers` are the live site. Run `scripts/check.sh` before a PR; brand rules are in the README. `media/` holds committed
 artifacts — the logo, social icons, wallet QR codes, and the README's
 `icons/` set — not scratch space.
