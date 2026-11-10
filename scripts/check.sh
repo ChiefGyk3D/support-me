@@ -95,6 +95,22 @@ run_checks() {
         [ -f "$root/$f" ] || bad "missing $f"
     done
 
+    # 8. Every local file the page or the stylesheet references exists.
+    local ref
+    while read -r ref; do
+        [ -n "$ref" ] || continue
+        [ -f "$root/$ref" ] || bad "referenced file is missing: $ref"
+    done < <({
+        grep -oE '(src|href)="[^"#:?]+"' "$html" | sed -E 's/^[a-z]+="//; s/"$//'
+        grep -oE 'url\(["'"'"']?[^)"'"'"':]+' "$css" "$root/tokens.css" | sed -E 's/^[^:]*:url\(["'"'"']?//; s#^\.\./##'
+    } | grep -vE '^(https?:|//|mailto:)' | sort -u)
+    [ -n "$(grep -oE '(src|href)="[^"#:?]+"' "$html")" ] || bad "no local references found (check is blind)"
+
+    # 9. Header links point at hosts that exist (links. and blog. do not).
+    if grep -nE 'https://(links|blog)\.chiefgyk3d\.com' "$html"; then
+        bad "header link to a retired or unknown host"
+    fi
+
     return "$fail"
 }
 
@@ -133,6 +149,9 @@ self_test() {
     expect_fail "rgb color in html" 's#<h1>#<h1 data-x="rgb(1,2,3)">#' index.html
     expect_fail "img without alt" 's#alt="Renegade Tux, the penguin mascot"##' index.html
     expect_fail "wrong address" 's#bc1qztdzcy2wyavj2tsuandu4p0tcklzttvdnzalla</code>#bc1qztdzcy2wyavj2tsuandu4p0tcklzttvdnzallb</code>#' index.html
+    expect_fail "missing referenced image" 's#media/mascot-128.webp#media/gone.webp#' index.html
+    expect_fail "missing css asset" 's#icons/#gone/#' style.css
+    expect_fail "retired header host" 's#https://chiefgyk3d.com/posts/#https://blog.chiefgyk3d.com/#' index.html
     expect_fail "loosened CSP" "s#script-src 'self'#script-src 'self' 'unsafe-inline'#" _headers
     return "$rc"
 }
