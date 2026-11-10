@@ -1,0 +1,9 @@
+# Cloudflare Pages response headers (same pattern as the blog's static/_headers).
+# script-src 'self' allows same-origin scripts; the only one is support.js
+# (scripts/check.sh fails on an inline script or a third-party source).
+/*
+  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; manifest-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
