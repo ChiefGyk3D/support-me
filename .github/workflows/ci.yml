@@ -1,0 +1,65 @@
+# CI for the site. The checks are the shared workflows in
+# ChiefGyk3D/git-your-ship-together (GYST), pinned by commit. `CI green` is the
+# single gate and stays a job of this file so the check run has exactly that name.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Weekly, Monday 06:00 UTC, so new advisories surface between commits
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  shell:
+    uses: ChiefGyk3D/git-your-ship-together/.github/workflows/bash-ci.yml@9e0d7b2e7e8530e2b1bb200ecb4fbf6de021881f # v1.38.0
+    permissions:
+      contents: read
+    with:
+      egress-policy: block # includes the workflow lint (actionlint, zizmor)
+
+  security:
+    uses: ChiefGyk3D/git-your-ship-together/.github/workflows/security.yml@9e0d7b2e7e8530e2b1bb200ecb4fbf6de021881f # v1.38.0
+    permissions:
+      contents: read
+      security-events: write
+      pull-requests: write
+      id-token: write # declared by the called workflow's snyk and scorecard jobs; checked statically
+    with:
+      codeql-languages: actions # no other CodeQL language in this repository
+      pip-audit-requirements: "" # no Python dependencies; the empty string skips the job
+      egress-policy: block
+
+  ci-green:
+    name: CI green
+    if: always()
+    needs: [shell, security]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Every job passed
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+        run: |
+          set -euo pipefail
+          echo "$RESULTS"
+          bad="$(echo "$RESULTS" | python3 -c '
+          import json, sys
+          needs = json.load(sys.stdin)
+          print(" ".join(k for k, v in needs.items() if v["result"] != "success"))
+          ')"
+          if [ -n "$bad" ]; then
+            echo "not green: $bad"
+            exit 1
+          fi
